@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art from the Metropolitan Museum of Art</title>
+</head>
+<body>
+
+    <% if (locals.data) {%>
+        <!--<img src=<%= data.primaryImage%> alt=<%= data.title %>>-->
+        <p><%= data.objectID %>, <%= data.title%>  </p>    
+        <img src=<%data.primaryImage %> alt="">
+    <%}else { %>
+        <p>Failed to make request: Request failed with status code 404</p>
+    <%}%>
+</body>
+</html>
