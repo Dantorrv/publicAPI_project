@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet"> 
     <title>Art from the Metropolitan Museum of Art</title>
+ 
 </head>
 <body>
 
+<div class="center">
     <% if (locals.data) {%>
         <!--<img src=<%= data.primaryImage%> alt=<%= data.title %>>-->
-        <p><%= data.objectID %>, <%= data.title%>  </p>    
-        <img src=<%data.primaryImage %> alt="">
+        <h1 ><%= data.title%> %></h1>
+            <div class="frame">  
+             <% if (data.primaryImageSmall!="") {%>
+                 <img src=<%= data.primaryImageSmall %> alt=<%= data.title %>>   
+             <%} else {%>
+                <img src="/images/image-not-found.jpg" alt="Oops" width="400px">    
+             <% } %>
+            </div>
+        <h3><%= data.accessionYear %>, by <% if (data.artistDisplayName!="") { %> 
+        <%= data.artistDisplayName %>    
+        <%}else{%> Unknown
+        <%}%>
+        </h3>  
+        
     <%}else { %>
-        <p>Failed to make request: Request failed with status code 404</p>
+        <p><%= error %></p>
+        <div class="frame">
+            <img src="/images/404.jpg" width="400px">
+        </div>
     <%}%>
+</div>
+
 </body>
 </html>
